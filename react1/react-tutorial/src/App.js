@@ -1,17 +1,29 @@
 import { useState } from "react";
 import { List } from "./List"
+import { Form } from "./Form";
+import { LANGUAGES} from "./const/languages";
 
 function App() {
-    const [description, setDescription] = useState('クリック前の表示');
+    const [tab, setTab] = useState("list");
+    const [langs, setLangth] = useState(LANGUAGES);
 
-    const changeDescription = () => {
-        setDescription("クリック後の表示です。");
+    const addLang = (lang) => {
+        setLangth([...langs, lang]);
+        setTab("list");
     }
+
     return (
         <div>
-            { description }
-            <List title="取り扱いたい言語一覧" />
-            <button onClick={ changeDescription }>ボタン</button>
+            <header>
+                <ul>
+                    <li onClick={() => setTab("list")}>リスト</li>
+                    <li onClick={() => setTab("form")}>フォーム</li>
+                </ul>
+            </header>
+            <hr/>
+            {
+                tab === "list" ? <List langs={langs}/> : < Form onAddLang={addLang}/>
+            }
         </div>
     )
 }
