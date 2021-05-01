@@ -1,15 +1,16 @@
-export const LANGUAGES = [
-    "JavaScript",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Go"
+const LANGUAGES = [
+  'JavaScript',
+  'C++',
+  'Ruby',
+  'Java',
+  'PHP',
+  'Go'
 ];
 
 export const getLanguages = () => {
-    return new Promise((resolve) => {
-        setTimeout( () => {
-            resolve(LANGUAGES);
-        }, 1000)
-    })
-}
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(LANGUAGES);
+    }, 1000);
+  });
+};
